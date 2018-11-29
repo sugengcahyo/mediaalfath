@@ -10,8 +10,7 @@ class Auth {
 
 	public static $table = 'users';
 
-	public function login($u_name, $u_pass)
-	{
+	public function login($u_name, $u_pass){
 		$where = [
 			'u_name' => $u_name,
 			'u_is_active' => 'Aktif'

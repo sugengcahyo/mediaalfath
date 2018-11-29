@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 12, 2018 at 02:52 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Host: localhost
+-- Waktu pembuatan: 29 Nov 2018 pada 01.17
+-- Versi server: 10.1.34-MariaDB
+-- Versi PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `akun`
+-- Struktur dari tabel `akun`
 --
 
 CREATE TABLE `akun` (
@@ -42,7 +44,7 @@ CREATE TABLE `akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `akun`
+-- Dumping data untuk tabel `akun`
 --
 
 INSERT INTO `akun` (`a_id`, `a_name`, `a_jid`, `a_created_at`, `a_updated_at`, `a_deleted_at`, `a_restored_at`, `a_created_by`, `a_updated_by`, `a_deleted_by`, `a_restored_by`, `a_is_deleted`) VALUES
@@ -59,7 +61,7 @@ INSERT INTO `akun` (`a_id`, `a_name`, `a_jid`, `a_created_at`, `a_updated_at`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ci_sessions`
+-- Struktur dari tabel `ci_sessions`
 --
 
 CREATE TABLE `ci_sessions` (
@@ -70,20 +72,36 @@ CREATE TABLE `ci_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ci_sessions`
+-- Dumping data untuk tabel `ci_sessions`
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('9kttltc2hid539m5qeerrd6qr6i2n789', '192.168.43.1', 1542028512, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323032383235353b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
-('3hb07eq1vandgdlk9p3felk0rd2ndg87', '192.168.43.19', 1542028515, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323032383239373b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
-('sr9l6qnvm3358seqrcajhd5d3g5gd7em', '192.168.1.5', 1542028582, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323032383538323b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
-('opq20chk7bs0ejllhjmkfjef5brr3l7d', '192.168.1.17', 1542029311, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323032393233373b755f69647c733a353a224866653933223b755f6e616d657c733a393a2262656e646168617261223b755f666e616d657c733a353a224a756a756e223b755f6c6576656c7c733a393a2242656e646168617261223b69735f6c6f676765645f696e7c623a313b),
-('bfl7jbsvs9fqb0ta3g5bhlovilufufbv', '192.168.1.5', 1542029512, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323032393438383b);
+('8a5740a6f04c86f21ecae5d844ae09191daa1c42', '::1', 1542215576, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323231353535353b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('4b5acede87611e917a445a672f129bf590ad0b63', '::1', 1542443666, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323434333438373b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('7ff97989dd0fcc740703174bfce2934735d6bdc4', '192.168.1.3', 1542451559, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323435313535393b),
+('0838d20df6730a95fc32048ce7746f76f65c195c', '192.168.1.3', 1542454980, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323435343938303b),
+('43633b0fb6ebd69848c7c83ccd11ed634ab1fcc3', '::1', 1542625419, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323632353333323b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('73396efbd582aafdd73c092a7f1c391946cd9c4f', '::1', 1542683834, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323638333830313b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('e1ac0bfe63926672707d454fee1d71d5937034b6', '127.0.0.1', 1542867824, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323836373632323b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('d8ff057e48f7e6253ff8bffa5b87a8dd87e506b8', '127.0.0.1', 1542871191, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323837313138343b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('15bfddf149f862c4a277f29aeae5dcde2d081c81', '::1', 1542888648, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323838383634373b),
+('552af4778a311c96f04d8463b3765ef69a040254', '::1', 1542893372, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534323839333337313b),
+('4373cdab8fc0df275f16004cbb592d4d6c54a2c6', '127.0.0.1', 1543138430, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333133383335363b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('bb95a97c7a7b350823162797e99bff9382c0652d', '127.0.0.1', 1543335861, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333333353737343b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('5182ecaf796416749cf1cbd6805edc8587fb1631', '127.0.0.1', 1543370262, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333337303031363b),
+('e9759d2ac4cc520c5136959af3177dceaeb262b4', '127.0.0.1', 1543391871, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333339313836303b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('7e09557e0cb840d609969f2cfb9c9087b182e0e4', '127.0.0.1', 1543396257, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333339363234363b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('c6e276b6148a006a2c925701ad9d3efedabf5eac', '127.0.0.1', 1543401737, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333430313439373b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('595b7d5a6e6476e0e6bbdc2bed79f1e49f4a6d49', '127.0.0.1', 1543415321, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333431353332303b),
+('dfb761d63a619e2557f0f1e9745952504f2f1d10', '127.0.0.1', 1543419879, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333431393837393b),
+('56fb09b096a61c07959d7ccb75deb6d0df7f1e7e', '127.0.0.1', 1543421525, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333432313530313b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('471434877e522eb0e8010c42c2a38085a6291266', '127.0.0.1', 1543428640, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333432383435363b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b),
+('7713efa89f2b34379db18e04e51977e7eeff6ef9', '127.0.0.1', 1543450616, 0x5f5f63695f6c6173745f726567656e65726174657c693a313534333435303631363b755f69647c733a353a227842336747223b755f6e616d657c733a353a2261646d696e223b755f666e616d657c733a363a22537567656e67223b755f6c6576656c7c733a31333a2241646d696e6973747261746f72223b69735f6c6f676765645f696e7c623a313b);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis`
+-- Struktur dari tabel `jenis`
 --
 
 CREATE TABLE `jenis` (
@@ -102,7 +120,7 @@ CREATE TABLE `jenis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `jenis`
+-- Dumping data untuk tabel `jenis`
 --
 
 INSERT INTO `jenis` (`j_id`, `j_name`, `j_transaksi`, `j_created_at`, `j_updated_at`, `j_deleted_at`, `j_restored_at`, `j_created_by`, `j_updated_by`, `j_deleted_by`, `j_restored_by`, `j_is_deleted`) VALUES
@@ -117,7 +135,7 @@ INSERT INTO `jenis` (`j_id`, `j_name`, `j_transaksi`, `j_created_at`, `j_updated
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jurnal`
+-- Struktur dari tabel `jurnal`
 --
 
 CREATE TABLE `jurnal` (
@@ -143,26 +161,16 @@ CREATE TABLE `jurnal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `jurnal`
+-- Dumping data untuk tabel `jurnal`
 --
 
 INSERT INTO `jurnal` (`jur_id`, `jur_name`, `jur_dot`, `jur_nominal`, `jur_debit`, `jur_kredit`, `jur_transaksi`, `jur_akun`, `jur_sof`, `jur_sisa`, `jur_created_at`, `jur_updated_at`, `jur_deleted_at`, `jur_restored_at`, `jur_created_by`, `jur_updated_by`, `jur_deleted_by`, `jur_restored_by`, `jur_is_deleted`) VALUES
-('18110500001', 'Pengajian Bulanan', '2018-11-05', 150000, 150000, 0, 0, 'AC001', 'SD001', 0, '2018-11-05 00:46:48', '2018-11-05 00:59:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'xB3gG', 'xB3gG', '', '', 'FALSE'),
-('18110500002', 'Sholat Jumat', '2018-11-05', 250000, 250000, 0, 0, 'AC005', 'SD001', 0, '2018-11-05 01:00:31', '2018-11-05 01:00:31', '2018-11-05 01:09:02', '2018-11-05 03:48:29', 'xB3gG', '', 'xB3gG', 'xB3gG', 'FALSE'),
-('18110500003', 'Donatur Bulan Oktober', '2018-10-10', 1500000, 0, 1500000, 0, 'AC004', 'SD002', 0, '2018-11-05 01:01:06', '2018-11-05 01:01:06', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'xB3gG', '', '', '', 'FALSE'),
-('18110500004', 'Agendaku', '2018-11-05', 185500, 185500, 0, 0, 'AC003', 'SD003', 0, '2018-11-05 04:00:18', '2018-11-05 04:00:18', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'xB3gG', '', '', '', 'FALSE'),
-('18110600005', 'Beli Lampu', '2018-11-06', 150000, 150000, 0, 0, 'AC009', 'SD001', 0, '2018-11-06 14:13:22', '2018-11-06 14:13:22', '2018-11-06 14:57:48', '2018-11-06 14:57:55', 'xB3gG', '', 'xB3gG', 'xB3gG', 'FALSE'),
-('18110600006', 'Konsumsi Kerja Bakti', '2018-11-03', 250000, 250000, 0, 0, 'AC005', 'SD003', 0, '2018-11-06 16:21:31', '2018-11-06 16:21:31', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'xB3gG', '', '', '', 'FALSE'),
-('18110700007', 'Donatur Bulan Nopember', '2018-11-07', 1600000, 0, 1600000, 0, 'AC004', 'SD002', 0, '2018-11-06 17:35:27', '2018-11-06 17:35:27', '2018-11-07 01:18:42', '2018-11-07 01:18:49', 'xB3gG', '', 'xB3gG', 'xB3gG', 'FALSE'),
-('18110700008', 'Konsumsi Pengajian Hari Senin', '2018-11-04', 125000, 125000, 0, 0, 'AC001', 'SD001', 0, '2018-11-06 17:38:39', '2018-11-06 17:38:39', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'xB3gG', '', '', '', 'FALSE'),
-('18110700009', 'Service Komputer Masjid', '2018-10-03', 600500, 600500, 0, 0, 'AC008', 'SD001', 0, '2018-11-06 17:45:34', '2018-11-06 17:45:34', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'xB3gG', '', '', '', 'FALSE'),
-('18110700010', 'Bayar Listrik', '2018-11-07', 550000, 550000, 0, 0, 'AC008', 'SD002', 0, '2018-11-07 02:02:36', '2018-11-07 02:02:36', '2018-11-08 06:02:34', '2018-11-07 07:30:54', 'xB3gG', '', 'xB3gG', 'xB3gG', 'TRUE'),
-('18110700011', 'Kotak Infaq Oktober', '2018-10-16', 1500000, 0, 1500000, 0, 'AC007', 'SD001', 0, '2018-11-07 02:03:25', '2018-11-08 06:01:52', '2018-11-08 06:02:26', '0000-00-00 00:00:00', 'xB3gG', 'xB3gG', 'xB3gG', '', 'TRUE');
+('18112900001', '{b!t{zlbnbbn', '2018-11-29', 12312312, 12312312, 0, 0, 'AC002', 'SD004', 0, '2018-11-28 17:38:52', '2018-11-28 17:38:52', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'xB3gG', '', '', '', 'FALSE');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sof`
+-- Struktur dari tabel `sof`
 --
 
 CREATE TABLE `sof` (
@@ -181,7 +189,7 @@ CREATE TABLE `sof` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sof`
+-- Dumping data untuk tabel `sof`
 --
 
 INSERT INTO `sof` (`s_id`, `s_name`, `s_inisial`, `s_created_at`, `s_updated_at`, `s_deleted_at`, `s_restored_at`, `s_created_by`, `s_updated_by`, `s_deleted_by`, `s_restored_by`, `s_is_deleted`) VALUES
@@ -195,7 +203,7 @@ INSERT INTO `sof` (`s_id`, `s_name`, `s_inisial`, `s_created_at`, `s_updated_at`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -204,7 +212,7 @@ CREATE TABLE `transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `transaksi`
+-- Dumping data untuk tabel `transaksi`
 --
 
 INSERT INTO `transaksi` (`t_id`, `t_name`) VALUES
@@ -214,7 +222,7 @@ INSERT INTO `transaksi` (`t_id`, `t_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -235,70 +243,72 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`u_id`, `u_name`, `u_pass`, `u_fpass`, `u_fname`, `u_level`, `u_created_at`, `u_updated_at`, `u_created_by`, `u_updated_by`, `u_password_updated_at`, `u_last_logged_in`, `u_ip_address`, `u_is_active`) VALUES
 ('dKECw', 'paijo', '$2y$05$IHleCvARdUSdl7Dwe1WccOn63irCH2NNI5eES6ZpbFeEIx26fxnjS', 'passulang', 'Paijo bin Bejo', 'Takmir', '2018-10-19 17:22:43', '2018-11-07 06:11:16', 'xB3gG', 'xB3gG', '2018-11-07 06:11:16', '2018-10-24 11:56:42', '192.168.43.1', 'Tidak Aktif'),
 ('Hfe93', 'bendahara', '$2y$05$ApiBTEzEgVmkXe94g4UPGe1v6tkj75fl6YEdqxn8TMZQpR..vYE1q', 'bendahara', 'Jujun', 'Bendahara', '2018-11-08 13:03:08', '2018-11-12 13:28:03', 'xB3gG', '', '0000-00-00 00:00:00', '2018-11-12 13:28:03', '192.168.1.17', 'Aktif'),
 ('olAir', 'sams97', '$2y$05$XGqcjumd5/g8PsQxn2t0H.2c0utd.WvaPcWJPFGRF9CZtf7SOG1dW', 'passulang', 'Samsul Arif', 'Sekretaris', '2018-10-22 12:50:09', '2018-11-07 07:33:37', 'xB3gG', 'xB3gG', '2018-11-07 06:11:12', '2018-11-07 07:33:37', '::1', 'Aktif'),
-('xB3gG', 'admin', '$2y$05$mm2FEXmR3E384n9MrIVv/.JPKcl7H9M7HugrjNZNjwbJ0hML7Jily', 'admin', 'Sugeng', 'Administrator', '2018-10-18 17:31:03', '2018-11-12 13:30:14', '', '2018-', '2018-11-12 13:04:49', '2018-11-12 13:30:14', '192.168.1.5', 'Aktif');
+('xB3gG', 'admin', '$2y$05$mm2FEXmR3E384n9MrIVv/.JPKcl7H9M7HugrjNZNjwbJ0hML7Jily', 'admin', 'Sugeng', 'Administrator', '2018-10-18 17:31:03', '2018-11-29 00:01:44', '', '2018-', '2018-11-12 13:04:49', '2018-11-29 00:01:44', '127.0.0.1', 'Aktif');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `akun`
+-- Indeks untuk tabel `akun`
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`a_id`);
 
 --
--- Indexes for table `ci_sessions`
+-- Indeks untuk tabel `ci_sessions`
 --
 ALTER TABLE `ci_sessions`
   ADD KEY `ci_session_timestamp` (`timestamp`) USING BTREE;
 
 --
--- Indexes for table `jenis`
+-- Indeks untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   ADD PRIMARY KEY (`j_id`);
 
 --
--- Indexes for table `jurnal`
+-- Indeks untuk tabel `jurnal`
 --
 ALTER TABLE `jurnal`
   ADD PRIMARY KEY (`jur_id`);
 
 --
--- Indexes for table `sof`
+-- Indeks untuk tabel `sof`
 --
 ALTER TABLE `sof`
   ADD PRIMARY KEY (`s_id`);
 
 --
--- Indexes for table `transaksi`
+-- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`t_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`u_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `transaksi`
+-- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

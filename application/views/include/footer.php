@@ -277,7 +277,7 @@
 					"data": null,
 					"orderable": true
 				},
-				{"data": "jur_id"},
+				{"data": "jur_id", render: $.fn.dataTable.render.rc5('jur_id')},
 				{"data": "jur_name"},
 				{"data": "jur_kredit", render: $.fn.dataTable.render.number( '.', ',', 2,'Rp' )},
 				{"data": "jur_debit", render: $.fn.dataTable.render.number( '.', ',', 2,'Rp' )},

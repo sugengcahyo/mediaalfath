@@ -20,7 +20,7 @@
 				foreach ($get_jurnal as $row) { ?>
 					<tr>
 						<td><?=++$i?></td>
-						<td><?=$row['jur_name'].'<br>('.$row['jur_id'].')'?></td>
+						<td><?=dekrip($row['jur_name']).'<br>('.$row['jur_id'].')'?></td>
 						<td><a class="btn btn-info btn-sm mb" href="<?=site_url("jurnal/detail/".$row['jur_id'])?>"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Lihat Detail</a></td>
 					</tr>
 				<?php } ?>
@@ -43,7 +43,7 @@
 				<tr>
 					<td>Nama Jurnal</td>
 					<td>:</td>
-					<td><?=$jurnal['jur_name']?></td>
+					<td><?=dekrip($jurnal['jur_name'])?></td>
 				</tr>
 				<tr>
 					<td>Tanggal Transaksi</td>

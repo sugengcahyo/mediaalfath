@@ -8,67 +8,70 @@ class Jurnal extends CI_Controller {
 		$this->load->model('m_jurnals');
 		$this->load->helper('nominal');
 		$this->load->helper('tgl_indo');
+		$this->load->helper('krip');
 		$this->auth->restrict();
 	}
 
 	private static $title = "Jurnal Transaksi &minus; Arsip Keuagan Masjid Al-Fath";
 	private static $table = 'jurnal';
 	private static $primaryKey = 'jur_id';
+	private static $where = 'jur_is_deleted = "FALSE"';	
 
 	public function index(){
 		$data['title'] = "Data ".self::$title;
 		$data['content'] = "dashboard/jurnal";
+		$data['jurnal'] = $this->m_jurnals->get_jurnal(self::$where)->result_array();
 		$this->load->view('dashboard/index', $data);
 	}
 
-	public function get_data()
-	{
-		if (!$this->input->is_ajax_request()) {
-			exit('No direct script access allowed');
-		} else {
-			$this->load->library('datatables_ssp');
-			$columns = array(
-				array('db' => 'jur_id', 'dt' => 'jur_id'),
-				array('db' => 'jur_name', 'dt' => 'jur_name'),
-				array('db' => 'jur_kredit', 'dt' => 'jur_kredit'),
-				array('db' => 'jur_debit', 'dt' => 'jur_debit'),
-				array('db' => 's_name', 'dt' => 'jur_sisa'),
-				array('db' => 'a_name', 'dt' => 'a_name'),
-				array('db' => 'jur_dot', 'dt' => 'jur_dot'),
-				array(
-					'db' => 'jur_id',
-					'dt' => 'tindakan',
-					'formatter' => function($jur_id) {
-						return '
-						<a class="btn btn-success btn-sm mb" href="'.site_url('jurnal/detail/'.$jur_id).'"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+	// public function get_data()
+	// {
+	// 	if (!$this->input->is_ajax_request()) {
+	// 		exit('No direct script access allowed');
+	// 	} else {
+	// 		$this->load->library('datatables_ssp');
+	// 		$columns = array(
+	// 			array('db' => 'jur_id', 'dt' => 'jur_id'),
+	// 			array('db' => 'jur_name', 'dt' => 'jur_name'),
+	// 			array('db' => 'jur_kredit', 'dt' => 'jur_kredit'),
+	// 			array('db' => 'jur_debit', 'dt' => 'jur_debit'),
+	// 			array('db' => 's_name', 'dt' => 'jur_sisa'),
+	// 			array('db' => 'a_name', 'dt' => 'a_name'),
+	// 			array('db' => 'jur_dot', 'dt' => 'jur_dot'),
+	// 			array(
+	// 				'db' => 'jur_id',
+	// 				'dt' => 'tindakan',
+	// 				'formatter' => function($jur_id) {
+	// 					return '
+	// 					<a class="btn btn-success btn-sm mb" href="'.site_url('jurnal/detail/'.$jur_id).'"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
 
-						<a class="btn btn-info btn-sm mb" href="'.site_url('jurnal/edit/'.$jur_id).'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+	// 					<a class="btn btn-info btn-sm mb" href="'.site_url('jurnal/edit/'.$jur_id).'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 						
-						<a class="btn btn-danger btn-sm mb" onclick="return confirmDialog();" href="'.site_url('jurnal/delete/'.$jur_id).'" title="Hapus"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';
-					}
-				),
-			);
+	// 					<a class="btn btn-danger btn-sm mb" onclick="return confirmDialog();" href="'.site_url('jurnal/delete/'.$jur_id).'" title="Hapus"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';
+	// 				}
+	// 			),
+	// 		);
 
-			$sql_details = [
-				'user' => $this->db->username,
-				'pass' => $this->db->password,
-				'db' => $this->db->database,
-				'host' => $this->db->hostname
-			];
+	// 		$sql_details = [
+	// 			'user' => $this->db->username,
+	// 			'pass' => $this->db->password,
+	// 			'db' => $this->db->database,
+	// 			'host' => $this->db->hostname
+	// 		];
 
-			$qjoin = "JOIN akun ON akun.a_id = jurnal.jur_akun 
-			JOIN sof ON sof.s_id = jurnal.jur_sof
-			JOIN jenis ON jenis.j_id=akun.a_jid 
-			JOIN transaksi ON transaksi.t_id = jenis.j_transaksi";
+	// 		$qjoin = "JOIN akun ON akun.a_id = jurnal.jur_akun 
+	// 		JOIN sof ON sof.s_id = jurnal.jur_sof
+	// 		JOIN jenis ON jenis.j_id=akun.a_jid 
+	// 		JOIN transaksi ON transaksi.t_id = jenis.j_transaksi";
 
-			echo json_encode(
-				Datatables_ssp::complex($_GET, $sql_details, self::$table, self::$primaryKey, $columns, NULL, "jur_is_deleted = 'FALSE'", $qjoin )
-			);
+	// 		echo json_encode(
+	// 			Datatables_ssp::complex($_GET, $sql_details, self::$table, self::$primaryKey, $columns, NULL, "jur_is_deleted = 'FALSE'", $qjoin )
+	// 		);
 
-			$this->load->library("format");
-			$jumDebit = $this->m_jurnals->jumDebit();
-		}
-	}
+	// 		$this->load->library("format");
+	// 		$jumDebit = $this->m_jurnals->jumDebit();
+	// 	}
+	// }
 
 	private function validation()
 	{
@@ -110,10 +113,11 @@ class Jurnal extends CI_Controller {
 					$debit = 0;
 					$kredit = $this->input->post('jur_nominal');
 				}
-				
+				// $this->load->library('rc5');
 				$data = [
 					'jur_id' => $this->input->post('jur_id', TRUE),
-					'jur_name' => ucwords($this->input->post('jur_name', TRUE)),
+					// 'jur_name' => rc4($this->input->post('jur_name', TRUE)),
+					'jur_name' => enkrip($this->input->post('jur_name', TRUE)),
 					'jur_dot' => $this->input->post('jur_dot', TRUE),
 					'jur_debit' => $debit,
 					'jur_kredit' => $kredit,
@@ -309,13 +313,12 @@ class Jurnal extends CI_Controller {
 	}
 
 	public function detail($jur_id){
-
 		$data['jurnal']=$this->m_jurnals->get_jurnal("jur_id = '$jur_id'")->row_array();
 		$data['get_jurnal']=$this->m_jurnals->get_jurnal("jur_is_deleted = 'FALSE'")->result_array();
 
 		$data['transaksi'] = $this->m_jurnals->get_transaksi();
 		$data['title'] = "Detail ".self::$title;
-		$data['form_title'] = "Detail jurnal '".strtoupper($data['jurnal']['jur_name'])."'";
+		$data['form_title'] = "Detail jurnal '".strtoupper(dekrip($data['jurnal']['jur_name']))."'";
 		$data['action'] = site_url(uri_string());
 		$data['content'] = 'dashboard/jurnal-detail';
 		$this->load->view('dashboard/index',$data);	
